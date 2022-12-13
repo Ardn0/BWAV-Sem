@@ -6,10 +6,11 @@
     <title>Manage Linux computers</title>
 </head>
 <body>
-<form method="post">
-    Jmeno: <input type="text" name="userName"> <br>
-    Heslo: <input type="password" name="password"> <br>
-    <button type="submit" name="login">Login</button>
+<form method="post" id="center">
+        Jmeno: <input type="text" name="userName" style="margin: 5px"> <br>
+        Heslo: <input type="password" name="password" style="margin: 5px"> <br>
+        <button type="submit" name="login" style="font-size: 15px; margin-top: 10px">Login</button>
+
     <?php
     require 'Database/dbCon.php';
     $jmenoUz = $_POST['userName'];

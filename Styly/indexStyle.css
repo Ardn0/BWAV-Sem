@@ -8,6 +8,13 @@
     height: 900px; /* only for demonstration, should be removed */
     #margin-right: 120px;
 }
+#center {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    margin-top: 90px;
+}
 
 li {
     list-style-type: none;
