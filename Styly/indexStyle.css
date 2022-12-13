@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+#menu {
+    float: left;
+    width: 130px;
+    height: 900px; /* only for demonstration, should be removed */
+    #margin-right: 120px;
+}
+
+li {
+    list-style-type: none;
+    text-align: center;
+    padding: 10px;
+}
+
+span {
+    color: black;
+}
+
+#strojeDiv {
+    float: left;
+    padding: 20px;
+    width: 1600px;
+    display: block;
+}
+
+#stroj {
+    border: 1px solid black;
+    margin-bottom: 50px;
+    float: left;
+    width: 30%;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 125px;
+}
+
+#nazev {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#stav {
+    width: 120px;
+    float: left;
+}
+
+#datum {
+    float: right;
+    text-align: right;
+}
+
+#infoStroj {
+    width: 630px;
+    margin-left: 32%;
+    text-align: center;
+}
+
+#infoStrojProces {
+    width: 70%;
+    margin-left: 20%;
+}
+
+#dist {
+    margin-left: 50px;
+}
+
+#dist2 {
+    margin-left: 82px;
+}
+
+#oSys, #oHar {
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 600px;
+}
+
+table {
+    margin-left: 16%;
+}
+
+td {
+    padding: 5px;
+    text-align: center;
+}
+
+#com {
+    text-align: left;
+    padding-left: 50px;
+}
