@@ -85,7 +85,7 @@ if ($gpu == "1080") {
 
 oci_close($c)
 ?>
-<form method="post">
+<form method="post" id="centerAdd">
     Název stroje: <input type="text" name="vmName" value=<?= $nazev ?>> <br>
     CPU:<select name="cpu">
         <option value="2" <?= $cpu2 ?>>2</option>
@@ -118,7 +118,7 @@ oci_close($c)
     <input type="radio" name="gpu" value="6500" <?= $gpu3 ?>> Radeon 6500
     <input type="radio" name="gpu" value="6750xt" <?= $gpu4 ?>> Radeon 6750XT
     <input type="radio" name="gpu" value="nic" <?= $gpu5 ?>> Nic
-    <br>
+    <br><br>
     <button type="submit" name="add">Pridej</button>
     <?php
     session_start();

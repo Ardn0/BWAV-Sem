@@ -54,95 +54,99 @@ if ($gpu != "nic") {
 
 ?>
 
-<div id="infoStroj">
-    <h2><?= $nazev ?></h2>
+<div id="celek">
+    <div id="infoStroj">
+        <h2><?= $nazev ?></h2>
 
-    <div id="oSys">
-        Distribuce: <?= $dis ?> <span id="dist"
-                                      style="margin-left: 170px"> Dostupne aktualizace:<?= $_SESSION['aktualizace'] ?> balicku </span>
-        <br>
+        <div id="oSys">
+            Distribuce: <?= $dis ?> <span id="dist"
+                                          style="margin-left: 170px"> Dostupne aktualizace:<?= $_SESSION['aktualizace'] ?> balicku </span>
+            <br>
+        </div>
+
+        <div id="oHar">
+            CPU: <?= $cpu . "/" . $cpu * 2 ?> <span id="dist" style="margin-left: 170px"> GPU: <?= $gpu ?> </span> <br> <br>
+            Vyuziti ram: <?= $randomCisloRam ?> GB / <?= $ram ?> GB <span
+                    id="dist"> Vyuziti CPU: <?= $randomCisloCPU ?>% </span>
+            <span id="dist"> Vyuziti GPU: <?= $randomCisloGPU ?>% </span>
+            <br>
+            Uloziste: <?= $randomCisloSSD ?>GB / <?= $ssd ?>GB <span
+                    id="dist"> Teplota CPU: <?= $randomCisloTeplotaCPU ?>°C </span>
+            <span id="dist"> Teplota GPU: <?= $randomCisloTeplotaGPU ?>°C </span>
+        </div>
+
     </div>
+    <br>
+    <div id="infoStrojProces">
 
-    <div id="oHar">
-        CPU: <?= $cpu . "/" . $cpu * 2 ?> <span id="dist" style="margin-left: 170px"> GPU: <?= $gpu ?> </span> <br> <br>
-        Vyuziti ram: <?= $randomCisloRam ?> GB / <?= $ram ?> GB <span
-                id="dist"> Vyuziti CPU: <?= $randomCisloCPU ?>% </span>
-        <span id="dist"> Vyuziti GPU: <?= $randomCisloGPU ?>% </span>
-        <br>
-        Uloziste: <?= $randomCisloSSD ?>GB / <?= $ssd ?>GB <span
-                id="dist"> Teplota CPU: <?= $randomCisloTeplotaCPU ?>°C </span>
-        <span id="dist"> Teplota GPU: <?= $randomCisloTeplotaGPU ?>°C </span>
+        <table>
+            <tbody>
+            <tr>
+                <td>PID</td>
+                <td>user</td>
+                <td>PRI</td>
+                <td>NI</td>
+                <td>CPU[%]</td>
+                <td>MEM[%]</td>
+                <td>TIME</td>
+                <td>Command</td>
+            </tr>
+            <tr>
+                <td>990</td>
+                <td>ondra</td>
+                <td>20</td>
+                <td>0</td>
+                <td>15.3</td>
+                <td>10.2</td>
+                <td>7:28.91</td>
+                <td id="com">/usr/lib/firefox/firefox</td>
+            </tr>
+            <tr>
+                <td>24718</td>
+                <td>root</td>
+                <td>20</td>
+                <td>0</td>
+                <td>0.9</td>
+                <td>0.1</td>
+                <td>0:00.20</td>
+                <td id="com">/usr/bin/NetworkManager</td>
+            </tr>
+            <tr>
+                <td>719</td>
+                <td>ondra</td>
+                <td>19</td>
+                <td>-1</td>
+                <td>0.7</td>
+                <td>0.5</td>
+                <td>0:05.81</td>
+                <td id="com">/usr/lib/Xorg -nolisten</td>
+            </tr>
+            <tr>
+                <td>627</td>
+                <td>ondra</td>
+                <td>20</td>
+                <td>0</td>
+                <td>0.0</td>
+                <td>0.1</td>
+                <td>0:08.27</td>
+                <td id="com">/usr/bin/plasmashell --no-respawn</td>
+            </tr>
+            <tr>
+                <td>1088</td>
+                <td>ondra</td>
+                <td>19</td>
+                <td>-1</td>
+                <td>10.1</td>
+                <td>5.3</td>
+                <td>0:02.53</td>
+                <td id="com">/usr/lib/firefox/firefox -contentproc -childID 1</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-
 </div>
-<br>
-<div id="infoStrojProces">
 
-    <table>
-        <tbody>
-        <tr>
-            <td>PID</td>
-            <td>user</td>
-            <td>PRI</td>
-            <td>NI</td>
-            <td>CPU[%]</td>
-            <td>MEM[%]</td>
-            <td>TIME</td>
-            <td>Command</td>
-        </tr>
-        <tr>
-            <td>990</td>
-            <td>ondra</td>
-            <td>20</td>
-            <td>0</td>
-            <td>15.3</td>
-            <td>10.2</td>
-            <td>7:28.91</td>
-            <td id="com">/usr/lib/firefox/firefox</td>
-        </tr>
-        <tr>
-            <td>24718</td>
-            <td>root</td>
-            <td>20</td>
-            <td>0</td>
-            <td>0.9</td>
-            <td>0.1</td>
-            <td>0:00.20</td>
-            <td id="com">/usr/bin/NetworkManager</td>
-        </tr>
-        <tr>
-            <td>719</td>
-            <td>ondra</td>
-            <td>19</td>
-            <td>-1</td>
-            <td>0.7</td>
-            <td>0.5</td>
-            <td>0:05.81</td>
-            <td id="com">/usr/lib/Xorg -nolisten</td>
-        </tr>
-        <tr>
-            <td>627</td>
-            <td>ondra</td>
-            <td>20</td>
-            <td>0</td>
-            <td>0.0</td>
-            <td>0.1</td>
-            <td>0:08.27</td>
-            <td id="com">/usr/bin/plasmashell --no-respawn</td>
-        </tr>
-        <tr>
-            <td>1088</td>
-            <td>ondra</td>
-            <td>19</td>
-            <td>-1</td>
-            <td>10.1</td>
-            <td>5.3</td>
-            <td>0:02.53</td>
-            <td id="com">/usr/lib/firefox/firefox -contentproc -childID 1</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+
 
 
 </body>

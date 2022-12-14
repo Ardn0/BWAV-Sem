@@ -6,7 +6,7 @@
     <title>Manage Linux computers</title>
 </head>
 <body>
-<form method="post">
+<form method="post" id="centerAdd">
     Název stroje: <input type="text" name="vmName"> <br>
     Distribuce: <select name="dis">
         <option value="Arch">Arch</option>
@@ -48,7 +48,7 @@
     <input type="radio" name="gpu" value="6500"> Radeon 6500
     <input type="radio" name="gpu" value="6750xt"> Radeon 6750XT
     <input type="radio" name="gpu" value="nic"> Nic
-    <br>
+    <br><br>
     <button type="submit" name="add">Pridej</button>
     <?php
     session_start();
