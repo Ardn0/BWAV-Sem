@@ -119,7 +119,7 @@ oci_close($c)
     <input type="radio" name="gpu" value="6750xt" <?= $gpu4 ?>> Radeon 6750XT
     <input type="radio" name="gpu" value="nic" <?= $gpu5 ?>> Nic
     <br><br>
-    <button type="submit" name="add">Pridej</button>
+    <button type="submit" name="add">Uprav</button>
     <?php
     session_start();
     include 'Database/dbCon.php';

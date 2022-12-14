@@ -9,8 +9,8 @@
 <div id="divMenu">
     <nav id="menu">
         <li><a href="prihlasen.php">Moje stroje</a></li>
-        <li><a href="#">Ceník</a></li>
         <li><a onclick="popupwindow('pridejStroj.php','as',800,500)" href="#">Vytvoř stroj</a></li>
+        <li><a href="index.php">Odhlášení</a> </li>
         <script>
             function popupwindow(url, title, w, h) {
                 var left = (screen.width / 2) - (w / 2);
@@ -90,9 +90,8 @@
     ?>
 </div>
 
-
     <?php
-    if ($idUz != 22) {
+    if ($_SESSION['jmeno'] != "cloud") {
         require 'Database/dbCon.php';
         session_start();
 
@@ -108,6 +107,8 @@
         }
         oci_execute($stid);
 
+        echo "<div id='strojeDiv' style='margin-top: auto'> <h3>Cloudové virtuální stroje:</h3>";
+
         while (($row = oci_fetch_array($stid, OCI_ASSOC))) {
             if ($row['BEZI'] == 1) {
                 $stavStroje = "Zapnuto";
@@ -120,8 +121,10 @@
                 $tlacitko = "Zapnout";
             }
             $idStroje = $row['ID_STROJE'];
-            echo "<div id='strojeDiv' style='margin-top: auto'> <h3>Cloudové virtuální stroje:</h3> <br> <div id='stroj'><form method='post'><div id='nazev'><span style='font-weight: bold'> Název: </span> " . $row['JMENO_STROJE'] . "<br> Distribuce: " . $row['DISTRIBUCE_STROJE'] . " </div> <div id='stav' style='color: $barvaStav' > <span style='font-weight: bold'>Stav:</span> " . $stavStroje . "</div> <div id='datum'><span style='font-weight: bold'>Datum spuštění:</span> " . $row['DATUM_SPUSTENI'] . "</div> <br> <button style='margin-left: 15px; margin-top: 10px; float: left' name='tlacitko' value='$idStroje'>$tlacitko</button> <button id='datum' style='margin-right: 15px; margin-top: 10px' name='info' value='$idStroje'>Více info</button></form> </div> </div>";
+            echo "<div id='stroj'><form method='post'><div id='nazev'><span style='font-weight: bold'> Název: </span> " . $row['JMENO_STROJE'] . "<br> Distribuce: " . $row['DISTRIBUCE_STROJE'] . " </div> <div id='stav' style='color: $barvaStav' > <span style='font-weight: bold'>Stav:</span> " . $stavStroje . "</div> <div id='datum'><span style='font-weight: bold'>Datum spuštění:</span> " . $row['DATUM_SPUSTENI'] . "</div> <br> <button style='margin-left: 15px; margin-top: 10px; float: left' name='tlacitko' value='$idStroje'>$tlacitko</button> <button id='datum' style='margin-right: 15px; margin-top: 10px' name='info' value='$idStroje'>Více info</button></form> </div>";
         }
+
+        echo"</div>";
 
         if (isset($_POST['tlacitko'])) {
             $idStroje = $_POST['info'];

@@ -8,8 +8,8 @@
 <body>
 <nav id="menu">
     <li><a href="prihlasen.php">Moje stroje</a></li>
-    <li><a href="#">Ceník</a></li>
-    <li><a onclick="popupwindow('upravStroj.php','as',800,500)" href="#">Uprav</a></li>
+    <li><a onclick="popupwindow('upravStroj.php','as',800,500)" href="#">Uprav stroj</a></li>
+    <li><a href="index.php">Odhlášení</a> </li>
     <script>
         function popupwindow(url, title, w, h) {
             var left = (screen.width / 2) - (w / 2);
