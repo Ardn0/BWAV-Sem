@@ -7,7 +7,7 @@
 </head>
 <body>
 <form method="post" id="center">
-    Jmeno: <input type="text" name="userName" style="margin: 5px"> <br>
+    Jméno: <input type="text" name="userName" style="margin: 5px"> <br>
     Heslo: <input type="password" name="password" style="margin: 5px"> <br>
     <button type="submit" name="registrace" style="font-size: 15px; margin-top: 10px">Vytvořit</button>
 
