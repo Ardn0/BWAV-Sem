@@ -128,7 +128,7 @@
                 $tlacitko = "Zapnout";
             }
             $idStroje = $row['ID_STROJE'];
-            echo "<div id='stroj'><form method='post'><div id='nazev'><span style='font-weight: bold'> Název: </span> " . $row['JMENO_STROJE'] . "<br> Distribuce: " . $row['DISTRIBUCE_STROJE'] . " </div> <div id='stav' style='color: $barvaStav' > <span style='font-weight: bold'>Stav:</span> " . $stavStroje . "</div> <div id='datum'><span style='font-weight: bold'>Datum spuštění:</span> " . $row['DATUM_SPUSTENI'] . "</div> <br> <button style='margin-left: 15px; margin-top: 10px; float: left' name='tlacitko' value='$idStroje'>$tlacitko</button> <button id='datum' style='margin-right: 15px; margin-top: 10px' name='info' value='$idStroje'>Více info</button></form> </div>";
+            echo "<div id='stroj'><form method='post'><div id='nazev'><span style='font-weight: bold'> Název: </span> " . $row['JMENO_STROJE'] . "<br> Distribuce: " . $row['DISTRIBUCE_STROJE'] . " </div> <div id='stav' style='color: $barvaStav' > <span style='font-weight: bold'>Stav:</span> " . $stavStroje . "</div> <div id='datum'><span style='font-weight: bold'>Datum spuštění:</span> " . $row['DATUM_SPUSTENI'] . "</div> <br>  <button id='datum' style='margin-right: 15px; margin-top: 10px' name='info' value='$idStroje'>Více info</button></form> </div>";
         }
 
         echo"</div>";

@@ -16,9 +16,7 @@
             var top = (screen.height / 2) - (h / 2);
             return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
         }
-
     </script>
-
 </nav>
 
 <?php
@@ -62,6 +60,8 @@ if ($gpu != "nic") {
         <div id="oSys">
             Distribuce: <?= $dis ?> <span id="dist"
                                           style="margin-left: 170px"> Dostupne aktualizace:<?= $_SESSION['aktualizace'] ?> balicku </span>
+            <br><br>
+            IP adresa: 245.142.12.56
             <br>
         </div>
 
@@ -146,22 +146,41 @@ if ($gpu != "nic") {
             </tbody>
         </table>
     </div>
-    <form method="post" style="margin-left: 48%; margin-top: 70px;">
-        <button name="odeber">Odeber</button>
-    </form>
+
 
     <?php
-    if (isset($_POST['odeber'])) {
-        require 'Database/dbCon.php';
-        session_start();
 
-        $idStroje = $_SESSION['idStroj'];
+    require 'Database/dbCon.php';
+    session_start();
 
-        $sql = "delete from LINUXMACHINES where ID_STROJE = '$idStroje'";
-        $stid = oci_parse($c, $sql);
-        oci_execute($stid);
-        oci_close($c);
-        header("Location: prihlasen.php");
+    $idStroje = $_SESSION['idStroj'];
+    $jmeno = $_SESSION['jmeno'];
+
+    $sql = "select ID_UZIVATEL from MACHINES_USERS where JMENO_UZIVATELE='$jmeno'";
+    $stid = oci_parse($c, $sql);
+    oci_execute($stid);
+    $row = oci_fetch_array($stid, OCI_ASSOC);
+    $idCloud = $row['ID_UZIVATEL'];
+
+    $sql = "select UZIVATEL_ID from LINUXMACHINES where ID_STROJE = '$idStroje'";
+    $stid = oci_parse($c, $sql);
+    oci_execute($stid);
+    $row = oci_fetch_array($stid, OCI_ASSOC);
+
+    if ($row['UZIVATEL_ID'] == $idCloud) {
+
+        echo "<form method='post' style='margin-left: 48%; margin-top: 70px;'> <button name='odeber'>Odeber</button> </form>";
+
+        if (isset($_POST['odeber'])) {
+
+            $idStroje = $_SESSION['idStroj'];
+
+            $sql = "delete from LINUXMACHINES where ID_STROJE = '$idStroje'";
+            $stid = oci_parse($c, $sql);
+            oci_execute($stid);
+            oci_close($c);
+            header("Location: prihlasen.php");
+        }
     }
     ?>
 </div>
