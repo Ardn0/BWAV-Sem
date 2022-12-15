@@ -28,7 +28,7 @@
         if (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
            echo "Uživatelské jméno už existuje";
         } else {
-            $sql = "insert into MACHINES_USERS(JMENO_UZIVATELE, HESLO_UZIVATEL) values ('" . $jmenoUz . "','" . $hesloUz . "') ";
+            $sql = "insert into MACHINES_USERS(JMENO_UZIVATELE, HESLO_UZIVATEL, PRIHLASEN) values ('" . $jmenoUz . "','" . $hesloUz . "',0) ";
             $stid = oci_parse($c, $sql);
             oci_execute($stid);
             oci_close($c);
