@@ -6,10 +6,11 @@
     <title>Manage Linux computers</title>
 </head>
 <body>
-<form method="post" id="center">
-    Jméno: <input type="text" name="userName" style="margin: 5px"> <br>
-    Heslo: <input type="password" name="password" style="margin: 5px"> <br>
+<form method="post" id="center" style="width: 20%;">
+    Nové jméno: <input type="text" name="userName" style="margin: 5px"> <br>
+    Nové heslo: <input type="password" name="password" style="margin: 5px"> <br>
     <button type="submit" name="registrace" style="font-size: 15px; margin-top: 10px">Vytvořit</button>
+    <button name="zpatky" style="font-size: 15px; margin-top: 10px">Zpět</button>
 
     <?php
     require 'Database/dbCon.php';
@@ -33,6 +34,10 @@
             oci_close($c);
             header("Location:index.php");
         }
+    }
+
+    if (isset($_POST['zpatky'])) {
+        header("Location: index.php");
     }
     ?>
 </form>
