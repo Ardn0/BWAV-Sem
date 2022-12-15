@@ -98,16 +98,23 @@
         $_SESSION['aktualizace'] = rand(0, 120);
         $idUz = $_SESSION['id'];
 
-        $sql = "SELECT * FROM LINUXMACHINES where UZIVATEL_ID = 22";
+        $sql = "select ID_UZIVATEL from MACHINES_USERS where JMENO_UZIVATELE='cloud'";
+        $stid = oci_parse($c, $sql);
+        oci_execute($stid);
+        $row = oci_fetch_array($stid, OCI_ASSOC);
+        $idCloud = $row['ID_UZIVATEL'];
+
+        $sql = "SELECT * FROM LINUXMACHINES where UZIVATEL_ID = $idCloud";
         $stid = oci_parse($c, $sql);
         oci_execute($stid);
 
-        if (($row = oci_fetch_array($stid, OCI_ASSOC)) == false) {
-            echo "Nemáte žádné virtuální stroje";
-        }
-        oci_execute($stid);
 
         echo "<div id='strojeDiv' style='margin-top: auto'> <h3>Cloudové virtuální stroje:</h3>";
+
+        if (($row = oci_fetch_array($stid, OCI_ASSOC)) == false) {
+            echo "Admin nevytvořil žádné virtuální stroje";
+        }
+        oci_execute($stid);
 
         while (($row = oci_fetch_array($stid, OCI_ASSOC))) {
             if ($row['BEZI'] == 1) {

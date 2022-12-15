@@ -121,7 +121,7 @@ span {
 }
 
 #infoStroj {
-    width: 630px;
+    width: 650px;
     margin-left: 32%;
     background-color: #e1f2f0;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
@@ -154,7 +154,7 @@ span {
     border: 1px solid black;
     padding: 10px;
     margin: 10px;
-    width: 600px;
+    width: 97%;
     border-radius: 10px;
 }
 

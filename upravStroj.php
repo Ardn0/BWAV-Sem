@@ -56,18 +56,36 @@ if ($ram == "2") {
     $ram64 = "checked";
 }
 
-if ($ssd == "32") {
+if ($ssd == "32" || $ssd - 1024 == "32") {
     $ssd32 = "checked";
-} elseif ($ssd == "64") {
+    if ($ssd - 1024 == "32" ){
+        $hddExtra = "checked";
+    }
+} elseif ($ssd == "64" || $ssd - 1024 == "64") {
     $ssd64 = "checked";
-} elseif ($ssd == "128") {
+    if ($ssd - 1024 == "64" ){
+        $hddExtra = "checked";
+    }
+} elseif ($ssd == "128" || $ssd - 1024 == "128") {
     $ssd128 = "checked";
-} elseif ($ssd == "256") {
+    if ($ssd - 1024 == "128" ){
+        $hddExtra = "checked";
+    }
+} elseif ($ssd == "256" || $ssd - 1024 == "256") {
     $ssd256 = "checked";
-} elseif ($ssd == "512") {
+    if ($ssd - 1024 == "256" ){
+        $hddExtra = "checked";
+    }
+} elseif ($ssd == "512" || $ssd - 1024 == "512") {
     $ssd512 = "checked";
-} elseif ($ssd == "1024") {
+    if ($ssd - 1024 == "512" ){
+        $hddExtra = "checked";
+    }
+} elseif ($ssd == "1024" || $ssd - 1024 == "1024") {
     $ssd1024 = "checked";
+    if ($ssd - 1024 == "1024" ){
+        $hddExtra = "checked";
+    }
 }
 
 if ($gpu == "1080") {
@@ -111,7 +129,7 @@ oci_close($c)
     <input type="radio" name="ssd" value="512" <?= $ssd512 ?>> 512 GB
     <input type="radio" name="ssd" value="1024" <?= $ssd1024 ?>> 1024 GB
     <br>
-    <input type="checkbox" name="extra"> + 1TB HDD
+    <input type="checkbox" name="extra" value="1000" <?= $hddExtra?>> + 1TB HDD
     <br>
     GPU: <input type="radio" name="gpu" value="1080" <?= $gpu1 ?>> Geforce GTX 1080
     <input type="radio" name="gpu" value="2080" <?= $gpu2 ?>> Geforce RTX 2080
@@ -131,7 +149,10 @@ oci_close($c)
     $gpu = $_POST['gpu'];
     $hdd = $_POST['extra'];
 
-    $ssd = $ssd + $hdd;
+    if ($hdd != ""){
+        $ssd = 1024 + $ssd;
+    }
+
     $idUz = $_SESSION['id'];
 
     $sql = "update LINUXMACHINES SET JMENO_STROJE = '" . $jmeno . "' , POCET_CPU = '" . $cpu . "',POCET_RAM = '" . $ram . "',VELIKOST_DISKU = '" . $ssd . "',GPU_STROJE = '" . $gpu . "' where ID_STROJE = $idStroje";

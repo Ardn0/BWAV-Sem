@@ -41,7 +41,7 @@
     <input type="radio" name="ssd" value="512"> 512 GB
     <input type="radio" name="ssd" value="1024"> 1024 GB
     <br>
-    <input type="checkbox" name="extra"> + 1TB HDD
+    <input type="checkbox" name="extra" value="1000"> + 1TB HDD
     <br>
     GPU: <input type="radio" name="gpu" value="1080"> Geforce GTX 1080
     <input type="radio" name="gpu" value="2080"> Geforce RTX 2080
@@ -61,7 +61,10 @@
     $gpu = $_POST['gpu'];
     $hdd = $_POST['extra'];
 
-    $ssd = $ssd + $hdd;
+    if ($hdd != ""){
+        $ssd = 1024 + $ssd;
+    }
+
     $idUz = $_SESSION['id'];
 
 

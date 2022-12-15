@@ -9,13 +9,14 @@
 <nav id="menu">
     <li><a href="prihlasen.php">Moje stroje</a></li>
     <li><a onclick="popupwindow('upravStroj.php','as',800,500)" href="#">Uprav stroj</a></li>
-    <li><a href="index.php">Odhlášení</a> </li>
+    <li><a href="index.php">Odhlášení</a></li>
     <script>
         function popupwindow(url, title, w, h) {
             var left = (screen.width / 2) - (w / 2);
             var top = (screen.height / 2) - (h / 2);
             return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
         }
+
     </script>
 
 </nav>
@@ -65,7 +66,8 @@ if ($gpu != "nic") {
         </div>
 
         <div id="oHar">
-            CPU: <?= $cpu . "/" . $cpu * 2 ?> <span id="dist" style="margin-left: 170px"> GPU: <?= $gpu ?> </span> <br> <br>
+            CPU: <?= $cpu . "/" . $cpu * 2 ?> <span id="dist" style="margin-left: 170px"> GPU: <?= $gpu ?> </span> <br>
+            <br>
             Vyuziti ram: <?= $randomCisloRam ?> GB / <?= $ram ?> GB <span
                     id="dist"> Vyuziti CPU: <?= $randomCisloCPU ?>% </span>
             <span id="dist"> Vyuziti GPU: <?= $randomCisloGPU ?>% </span>
@@ -144,9 +146,25 @@ if ($gpu != "nic") {
             </tbody>
         </table>
     </div>
+    <form method="post" style="margin-left: 48%; margin-top: 70px;">
+        <button name="odeber">Odeber</button>
+    </form>
+
+    <?php
+    if (isset($_POST['odeber'])) {
+        require 'Database/dbCon.php';
+        session_start();
+
+        $idStroje = $_SESSION['idStroj'];
+
+        $sql = "delete from LINUXMACHINES where ID_STROJE = '$idStroje'";
+        $stid = oci_parse($c, $sql);
+        oci_execute($stid);
+        oci_close($c);
+        header("Location: prihlasen.php");
+    }
+    ?>
 </div>
-
-
 
 
 </body>
